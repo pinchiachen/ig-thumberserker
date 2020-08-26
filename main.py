@@ -2,6 +2,7 @@ from selenium import webdriver
 from time import sleep
 from secret import get_account
 from target import get_target_account
+from element import Element
 
 USERNAME, PASSWORD = get_account()
 TARGET_ACCOUNT = get_target_account()
@@ -18,17 +19,17 @@ class InstagramBot:
     def login(self):
         self.driver.get(BASE_URL)
         sleep(2)
-        self.driver.find_element_by_xpath('//input[@name=\"username\"]')\
+        self.driver.find_element_by_xpath(Element.INPUT_USERNAME.value)\
             .send_keys(self.username)
-        self.driver.find_element_by_xpath('//input[@name=\"password\"]')\
+        self.driver.find_element_by_xpath(Element.INPUT_PASSWORD.value)\
             .send_keys(self.password)
-        self.driver.find_element_by_xpath('//button[@type="submit"]')\
+        self.driver.find_element_by_xpath(Element.BUTTON_SUBMIT.value)\
             .click()
         sleep(4)
-        self.driver.find_element_by_xpath("//button[contains(text(), '稍後再說')]")\
+        self.driver.find_element_by_xpath(Element.BUTTON_NEXT_TIME.value)\
             .click()
         sleep(4)
-        self.driver.find_element_by_xpath("//button[contains(text(), '稍後再說')]")\
+        self.driver.find_element_by_xpath(Element.BUTTON_NEXT_TIME.value)\
             .click()
         sleep(4)
     
@@ -38,6 +39,7 @@ class InstagramBot:
 
     def browse(self):
         pic_hrefs = []
+        hrefs_exist = dict()
         for _ in range(SCROLL_PAGE):
             try:
                 self.driver.execute_script("window.scrollTo(0, document.body.scrollHeight);")
@@ -47,7 +49,10 @@ class InstagramBot:
                     for elem in hrefs_in_view
                     if '.com/p/' in elem.get_attribute('href')
                 ]
-                [pic_hrefs.append(href) for href in hrefs_in_view if href not in pic_hrefs]
+                for href in hrefs_in_view:
+                    if href not in hrefs_exist:
+                        pic_hrefs.append(href)
+                        hrefs_exist[href] = 1
                 sleep(3)
             except Exception:
                 continue
@@ -62,7 +67,7 @@ class InstagramBot:
                 continue
     
     def like_pic(self): 
-        self.driver.find_element_by_xpath('/html/body/div[1]/section/main/div/div[1]/article/div[3]/section[1]/span[1]/button/div/span')\
+        self.driver.find_element_by_xpath(Element.BUTTON_LIKE.value)\
             .click()
         sleep(2)
 
