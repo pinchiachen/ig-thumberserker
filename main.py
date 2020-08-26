@@ -33,7 +33,7 @@ class InstagramBot:
         sleep(4)
     
     def go_target(self):
-        self.driver.get(f'https://instagram.com/{TARGET_ACCOUNT}')
+        self.driver.get(f'{BASE_URL}/{TARGET_ACCOUNT}')
         sleep(2)
 
     def browse(self):
