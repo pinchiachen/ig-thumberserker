@@ -5,4 +5,5 @@ class Element(Enum):
     INPUT_PASSWORD =  '//input[@name=\"password\"]'
     BUTTON_SUBMIT = '//button[@type="submit"]'
     BUTTON_NEXT_TIME = '//button[contains(text(), "稍後再說")]'
-    BUTTON_LIKE = '/html/body/div[1]/section/main/div/div[1]/article/div[3]/section[1]/span[1]/button/div/span'
+    BUTTON_LIKE = '//article//section//button//*[@aria-label="讚"]'
+    BUTTON_DISLIKE = '//article//section//button//*[@aria-label="收回讚"]'

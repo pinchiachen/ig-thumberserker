@@ -7,14 +7,16 @@ from element import Element
 USERNAME, PASSWORD = get_account()
 TARGET_ACCOUNT = get_target_account()
 
-SCROLL_PAGE = 1
 BASE_URL = 'https://instagram.com'
+SCROLL_PAGE = 2
+IS_LIKE = False
 
 class InstagramBot:
-    def __init__(self, username, password):
+    def __init__(self, username, password, like = True):
         self.driver = webdriver.Chrome()
         self.username = username
         self.password = password
+        self.like = like
 
     def login(self):
         self.driver.get(BASE_URL)
@@ -58,25 +60,30 @@ class InstagramBot:
                 continue
         return pic_hrefs
 
-    def like_pics(self, pic_hrefs):
+    def manipulate_pics(self, pic_hrefs):
         for pic_href in pic_hrefs:
             try:
                 self.driver.get(pic_href)
-                self.like_pic()
+                self.like_pic() if self.like else self.dislike_pic()
             except Exception:
                 continue
     
-    def like_pic(self): 
+    def like_pic(self):
         self.driver.find_element_by_xpath(Element.BUTTON_LIKE.value)\
             .click()
         sleep(2)
 
+    def dislike_pic(self): 
+        self.driver.find_element_by_xpath(Element.BUTTON_DISLIKE.value)\
+            .click()
+        sleep(2)
+
 def main():
-    inst_bot = InstagramBot(USERNAME, PASSWORD)
+    inst_bot = InstagramBot(USERNAME, PASSWORD, IS_LIKE)
     inst_bot.login()
     inst_bot.go_target()
     pics = inst_bot.browse()
-    inst_bot.like_pics(pics)
+    inst_bot.manipulate_pics(pics)
     print('---end---')
 
 if __name__ == "__main__":
