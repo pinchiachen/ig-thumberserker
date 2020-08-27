@@ -1,8 +1,8 @@
 # ig-thumberserker｜哀居狂讚士
 
 ## TL;DR
-> ***1. 讚爆你想讚爆的人***
-> ***2. 收回所有的讚***
+- ***讚爆你想讚爆的人***
+- ***收回所有的讚***
 
 ## How to use
 ### Step 1. Install chromedriver
