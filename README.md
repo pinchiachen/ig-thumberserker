@@ -13,7 +13,7 @@
 
 ### Step 1.5 (Optional) Build virtual environment
 - `python3 -m venv .venv`
-- `source .vanv/bin/active`
+- `source .venv/bin/active`
   
 ### Step 2. `pip install -r requirement.txt`
 
