@@ -3,3 +3,4 @@ secret.py
 target.py
 .vscode
 .venv
+.misc
