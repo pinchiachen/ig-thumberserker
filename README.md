@@ -7,6 +7,8 @@
   - 適用跟朋友絕交或分手，不讓對方貼文多任何一個愛心，一個都不能
 
 ## How to use
+### Step 0. Clone this project
+
 ### Step 1. Install chromedriver
 - 下載相對應你目前 **Chrome** 瀏覽器版本的 **chromedriver**
 - 將 **chromedriver** 丟入 `/usr/local/bin`
@@ -17,7 +19,7 @@
   
 ### Step 2. `pip install -r requirement.txt`
 
-### Step 3. `target.py` & `secret.py`
+### Step 3. add `target.py` & `secret.py`
 ```python
 ## target.py
 TARGET_ACCOUNT = 'YOUR_TARGET_ACCOUNT'
