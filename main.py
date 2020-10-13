@@ -64,16 +64,16 @@ class InstagramBot:
         for pic_href in pic_hrefs:
             try:
                 self.driver.get(pic_href)
-                self.like_pic() if self.like else self.dislike_pic()
+                self.__like_pic() if self.like else self.__dislike_pic()
             except Exception:
                 continue
     
-    def like_pic(self):
+    def __like_pic(self):
         self.driver.find_element_by_xpath(Element.BUTTON_LIKE.value)\
             .click()
         sleep(2)
 
-    def dislike_pic(self): 
+    def __dislike_pic(self): 
         self.driver.find_element_by_xpath(Element.BUTTON_DISLIKE.value)\
             .click()
         sleep(2)
