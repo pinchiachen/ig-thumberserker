@@ -11,7 +11,7 @@
 
 ### Step 1. Install chromedriver
 - 下載相對應你目前 **Chrome** 瀏覽器版本的 **chromedriver**
-- 將 **chromedriver** 丟入 `/usr/local/bin`
+- 將 **chromedriver** 丟入 `/usr/local/bin` (macOS)
 
 ### Step 1.5 (Optional) Build virtual environment
 - `python3 -m venv .venv`
@@ -19,7 +19,7 @@
   
 ### Step 2. `pip install -r requirement.txt`
 
-### Step 3. add `target.py` & `secret.py`
+### Step 3. Add `target.py` & `secret.py`
 ```python
 ## target.py
 TARGET_ACCOUNT = 'YOUR_TARGET_ACCOUNT'
