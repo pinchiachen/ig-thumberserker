@@ -35,8 +35,8 @@ class InstagramBot:
             .click()
         sleep(4)
     
-    def go_target(self):
-        self.driver.get(f'{BASE_URL}/{TARGET_ACCOUNT}')
+    def go_target(self, url):
+        self.driver.get(url)
         sleep(2)
 
     def browse(self):
@@ -81,7 +81,8 @@ class InstagramBot:
 def main():
     inst_bot = InstagramBot(USERNAME, PASSWORD, IS_LIKE)
     inst_bot.login(inst_bot.username, inst_bot.password)
-    inst_bot.go_target()
+    target_url = f'{BASE_URL}/{TARGET_ACCOUNT}'
+    inst_bot.go_target(target_url)
     pics = inst_bot.browse()
     inst_bot.manipulate_pics(pics)
     print('---end---')
