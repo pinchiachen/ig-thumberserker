@@ -18,13 +18,13 @@ class InstagramBot:
         self.password = password
         self.like = like
 
-    def login(self, username, password):
+    def login(self):
         self.driver.get(BASE_URL)
         sleep(2)
         self.driver.find_element_by_xpath(Element.INPUT_USERNAME.value)\
-            .send_keys(username)
+            .send_keys(self.username)
         self.driver.find_element_by_xpath(Element.INPUT_PASSWORD.value)\
-            .send_keys(password)
+            .send_keys(self.password)
         self.driver.find_element_by_xpath(Element.BUTTON_SUBMIT.value)\
             .click()
         sleep(4)
@@ -80,7 +80,7 @@ class InstagramBot:
 
 def main():
     inst_bot = InstagramBot(USERNAME, PASSWORD, IS_LIKE)
-    inst_bot.login(inst_bot.username, inst_bot.password)
+    inst_bot.login()
     target_url = f'{BASE_URL}/{TARGET_ACCOUNT}'
     inst_bot.go_target(target_url)
     pics = inst_bot.browse()
