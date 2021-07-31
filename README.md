@@ -17,7 +17,7 @@
 - `python3 -m venv .venv`
 - `source .venv/bin/active`
   
-### Step 2. `pip install -r requirement.txt`
+### Step 2. `pip install -r requirements.txt`
 
 ### Step 3. Add `target.py` & `secret.py`
 ```python
